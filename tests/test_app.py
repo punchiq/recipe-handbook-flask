@@ -9,7 +9,7 @@ class HandbookTests(unittest.TestCase):
 
     def test_catalog_and_detail(self):
         catalog = self.client.get("/").get_data(as_text=True)
-        self.assertIn("/recipes/syrniki", catalog)
+        self.assertIn("/recipe/syrniki", catalog)
         page = self.client.get("/recipes/syrniki").get_data(as_text=True)
         self.assertIn("Сырники", page)
         self.assertIn("Приготовление", page)
@@ -17,7 +17,7 @@ class HandbookTests(unittest.TestCase):
     def test_ingredient_search(self):
         body = self.client.get("/ingredients", query_string={"q": " ТВОРОГ "}).get_data(as_text=True)
         self.assertIn("Сырники", body)
-        self.assertNotIn("/recipes/salad", body)
+        self.assertNotIn("/recipe/salad", body)
 
     def test_empty_result(self):
         body = self.client.get("/ingredients?q=mango").get_data(as_text=True)

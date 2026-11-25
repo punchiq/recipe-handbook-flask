@@ -1,21 +1,8 @@
-from flask import Flask, abort, render_template
+from flask import Flask
 
-from catalog import recipes
-from ingredients import ingredients
+from routes.ingredients import ingredients
+from routes.recipes import pages
 
 app = Flask(__name__)
+app.register_blueprint(pages)
 app.register_blueprint(ingredients)
-
-
-@app.get("/")
-def index():
-    return render_template("index.html", items=recipes())
-
-
-@app.get("/recipes/<slug>")
-def detail(slug):
-    recipe = next((item for item in recipes() if item["slug"] == slug), None)
-    if recipe is None:
-        abort(404)
-    return render_template("recipe.html", recipe=recipe)
-
