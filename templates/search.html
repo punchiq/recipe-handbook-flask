@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Поиск по ингредиенту{% endblock %}
+{% block content %}
+<h1>Поиск по ингредиенту</h1>
+<form method="get"><label for="q">Ингредиент или часть названия</label>
+<input id="q" name="q" value="{{ query }}" placeholder="Например, творог"><button>Найти</button></form>
+<ul>{% for item in items %}<li><a href="{{ url_for('detail', slug=item.slug) }}">{{ item.title }}</a></li>
+{% else %}<li>Рецептов с таким ингредиентом пока нет.</li>{% endfor %}</ul>
+{% endblock %}
