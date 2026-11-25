@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}{{ recipe.title }} · Рецептурный справочник{% endblock %}
+{% block content %}
+<h1>{{ recipe.title }}</h1><p>{{ recipe.time }}</p>
+<h2>Ингредиенты</h2><ul>{% for line in recipe.ingredients %}<li>{{ line }}</li>{% endfor %}</ul>
+<h2>Приготовление</h2><ol>{% for step in recipe.steps %}<li>{{ step }}</li>{% endfor %}</ol>
+{% endblock %}
