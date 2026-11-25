@@ -1,8 +1,10 @@
 from flask import Flask, abort, render_template
 
 from catalog import recipes
+from ingredients import ingredients
 
 app = Flask(__name__)
+app.register_blueprint(ingredients)
 
 
 @app.get("/")
