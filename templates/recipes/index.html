@@ -2,6 +2,6 @@
 {% block content %}
 <h1>Каталог рецептов</h1>
 <ul>{% for item in items %}
-<li><a href="{{ url_for('detail', slug=item.slug) }}">{{ item.title }}</a> · {{ item.time }}</li>
+<li><a href="{{ url_for('recipes.detail', slug=item.slug) }}">{{ item.title }}</a> · {{ item.time }}</li>
 {% endfor %}</ul>
 {% endblock %}

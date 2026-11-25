@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-DATA = Path(__file__).parent / "data" / "recipes.json"
+DATA = Path(__file__).parent.parent / "data" / "recipes.json"
 
 
 def recipes():

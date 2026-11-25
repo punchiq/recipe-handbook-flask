@@ -1,13 +1,13 @@
 from flask import Blueprint, render_template, request
 
-from catalog import recipes
+from core.models import recipes
 
 ingredients = Blueprint("ingredients", __name__)
 
 
-@ingredients.get("/ingredients")
+@ingredients.route("/ingredients", methods=["GET", "POST"])
 def search():
-    query = request.args.get("q", "").strip()
+    query = request.values.get("q", "").strip()
     items = recipes()
     if query:
         items = [item for item in items if any(
